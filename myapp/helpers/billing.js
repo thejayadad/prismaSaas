@@ -8,8 +8,6 @@ export const stripe = new Stripe(String(process.env.STRIPE_SECRET), {
     apiVersion: '2023-10-16',
 });
 
-const SUCCESS_URL = 'http://localhost:3000/dashboard/billing?success=true';
-const CANCEL_URL = 'http://localhost:3000/dashboard/billing?success=true';
 
 export async function hasSubscription() {
     try {

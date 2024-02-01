@@ -17,6 +17,7 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/react";
 import LogoutButton from "../Button/LogoutButton";
+import ThemeToggle from "../Button/ThemeToggle";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -40,29 +41,23 @@ export default function App() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
+          <Link color="foreground" href="/dashboard">
+            Dashboard
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
+          <Link href="/post" color="foreground">
+            Post
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
 
         {/* Login Information */}
-
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
         <NavbarItem>
+        <ThemeToggle />
+        </NavbarItem>
+          <NavbarItem>
         <LogoutButton />
         </NavbarItem>
       </NavbarContent>

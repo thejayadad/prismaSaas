@@ -15,8 +15,16 @@ export const stripe = new Stripe(String(process.env.STRIPE_SECRET), {
 
 const DashboardPage = async () => {
     const user = await getServerUser()
+    if(!user){
+        return(
+            <div>
+                <Link href={'/login'}>Login</Link>
+            </div>
+        )
+    }
     const email = user.email
     await createCustomerIfNull()
+
     const currentUser = await prisma.user.findFirst({
         where: {
             email: email
