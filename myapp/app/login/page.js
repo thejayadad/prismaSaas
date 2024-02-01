@@ -1,41 +1,41 @@
-import React from 'react'
-import {getServerSession} from "next-auth";
-import { authOptions } from '@/lib/auth';
-import Link from 'next/link';
-import LoginWithGoogle from '@/components/Button/LoginWithGoogle';
+
+  import React from 'react'
+  import {getServerSession} from "next-auth";
+  import { authOptions } from '@/lib/auth';
+  import Link from 'next/link';
+  import LoginWithGoogle from '@/components/Button/LoginWithGoogle';
+  import {FiArrowDown} from "react-icons/fi"
 
 
-const LoginPage = async () => {
-    const session = await getServerSession(authOptions);
-    const email = session?.user.email
-    const image = session?.user.image
-    console.log("image " + image)
+  const LoginPage = async () => {
+      const session = await getServerSession(authOptions);
+      const email = session?.user.email
+      const image = session?.user.image
+      console.log("image " + image)
 
-  return (
-    <div>
-          {!!session && (
-            <div className='flex gap-2 items-center'>
-            {/* <Avatar src={image} /> */}
-
-              {/* <Link
-              className='links'
-              href={'/dashboard/${email}'}>
-                Hello, {session?.user?.name}
-              </Link> */}
-         
-            <Link href={'/dashboard'}>
-                DashboardPage
-            </Link>
-            </div>
-          )}
-          {!session && (
-            <>
-            <LoginWithGoogle />
-            </>
-          )}   
-
+    return (
+      <div className='min-h-screen flex flex-col justify-center items-center'>
+      {!!session && (
+        <div className='flex flex-col gap-2 items-center'>
+          <h1 className='title-font sm:text-4xl text-3xl mb-2 font-medium text-gray-900'>
+            Welcome To The Fan Vent Zone
+          </h1>
+          <p className='leading-relaxed'>
+            Glad You're Back, <span>{email}</span>
+          </p>
+          <p className={`pulse flex flex-col items-center`}>
+            To Your Dashboard
+            <br />
+            <FiArrowDown />
+          </p>
+          <Link 
+          className='bg-success px-12 py-4 text-white rounded-xl'
+          href={'/dashboard'}>DashboardPage</Link>
+        </div>
+      )}
+      {!session && <LoginWithGoogle />}
     </div>
-  )
-}
+    )
+  }
 
-export default LoginPage
+  export default LoginPage
