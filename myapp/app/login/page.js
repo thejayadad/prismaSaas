@@ -23,13 +23,13 @@
           <p className='leading-relaxed'>
             Glad You're Back, <span>{email}</span>
           </p>
-          <p className={`pulse flex flex-col items-center`}>
+          <p className={`pulse flex flex-col sm:text-3xl items-center`}>
             To Your Dashboard
             <br />
             <FiArrowDown />
           </p>
           <Link 
-          className='bg-success px-12 py-4 text-white rounded-xl'
+          className='bg-success sm:px-6  md:px-12 py-4 text-white rounded-xl'
           href={'/dashboard'}>DashboardPage</Link>
         </div>
       )}
